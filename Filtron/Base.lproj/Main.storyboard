@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A386b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Filtron" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +18,145 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="ekP-zC-emg">
+                                <rect key="frame" x="30.5" y="30" width="540" height="540"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ekP-zC-emg" secondAttribute="height" multiplier="1:1" id="9x3-fr-t9P"/>
+                                </constraints>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="30" y="-70" width="540" height="540"/>
+                                </variation>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="40" y="-60" width="720" height="720"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIb-cF-ecg">
+                                <rect key="frame" x="277" y="550" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="photosPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GJO-yb-R6D"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="IIb-cF-ecg" secondAttribute="centerX" id="98k-kF-cco"/>
+                            <constraint firstItem="ekP-zC-emg" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="PlM-ug-rDP"/>
+                            <constraint firstItem="ekP-zC-emg" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="bIu-kp-mM1"/>
+                            <constraint firstItem="ekP-zC-emg" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.7" id="h5z-fR-N4g"/>
+                            <constraint firstAttribute="centerX" secondItem="ekP-zC-emg" secondAttribute="centerX" id="i6S-af-ZUB"/>
+                            <constraint firstAttribute="centerY" secondItem="ekP-zC-emg" secondAttribute="centerY" id="qlL-g8-x8W"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IIb-cF-ecg" secondAttribute="bottom" constant="20" id="wfa-p1-g5A"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="PlM-ug-rDP"/>
+                                <exclude reference="h5z-fR-N4g"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="PlM-ug-rDP"/>
+                                <exclude reference="bIu-kp-mM1"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="h5z-fR-N4g"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="ekP-zC-emg" id="nN4-dg-g25"/>
+                        <segue destination="JZi-Vd-VUO" kind="presentation" identifier="SHOW_GALLERY" id="a3i-y5-pey"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Gallery View Controller-->
+        <scene sceneID="bzI-zS-rew">
+            <objects>
+                <viewController id="JZi-Vd-VUO" customClass="GalleryViewController" customModule="Filtron" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XEg-nW-TBB"/>
+                        <viewControllerLayoutGuide type="bottom" id="a3F-CN-xYZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cSC-JB-sFf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sWZ-fe-f5v">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="746"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="TAM-nf-pWx">
+                                    <size key="itemSize" width="130" height="130"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="8" maxX="20" maxY="8"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GALLERY_CELL" id="tN9-Yp-4s0" customClass="GalleryCell" customModule="Filtron" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fyq-HV-lyf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                                </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ii4-Pf-CRc">
+                                                    <rect key="frame" x="46" y="46" width="37" height="37"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="fyq-HV-lyf" firstAttribute="top" secondItem="tN9-Yp-4s0" secondAttribute="topMargin" constant="-8" id="0NV-hK-OvE"/>
+                                            <constraint firstItem="fyq-HV-lyf" firstAttribute="leading" secondItem="tN9-Yp-4s0" secondAttribute="leadingMargin" constant="-8" id="5kL-21-v6F"/>
+                                            <constraint firstAttribute="centerY" secondItem="Ii4-Pf-CRc" secondAttribute="centerY" id="IXI-mX-xqG"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="fyq-HV-lyf" secondAttribute="trailing" constant="-8" id="USN-vd-SbB"/>
+                                            <constraint firstAttribute="centerX" secondItem="Ii4-Pf-CRc" secondAttribute="centerX" id="hdu-eW-19c"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="fyq-HV-lyf" secondAttribute="bottom" constant="-8" id="sTY-pA-wyR"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="activityIndicator" destination="Ii4-Pf-CRc" id="u3e-f9-v7w"/>
+                                            <outlet property="imageView" destination="fyq-HV-lyf" id="4rv-jK-pJL"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a3F-CN-xYZ" firstAttribute="top" secondItem="sWZ-fe-f5v" secondAttribute="bottom" id="BPU-MN-w86"/>
+                            <constraint firstItem="sWZ-fe-f5v" firstAttribute="leading" secondItem="cSC-JB-sFf" secondAttribute="leadingMargin" constant="-16" id="Gdu-2s-AZy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sWZ-fe-f5v" secondAttribute="trailing" constant="-16" id="NpY-g8-lda"/>
+                            <constraint firstItem="sWZ-fe-f5v" firstAttribute="top" secondItem="cSC-JB-sFf" secondAttribute="topMargin" id="e8p-Dd-8HQ"/>
+                            <constraint firstAttribute="height" secondItem="sWZ-fe-f5v" secondAttribute="height" constant="-146" id="ljY-dS-l0p"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="BPU-MN-w86"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="sWZ-fe-f5v" id="bwy-xC-ngX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3fz-ZR-lfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1043" y="355"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="300" height="300"/>
+    </resources>
 </document>

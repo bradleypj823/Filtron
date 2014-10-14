@@ -14,6 +14,8 @@
 		16B54EBE19EC34B2004F7BE9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16B54EBD19EC34B2004F7BE9 /* Images.xcassets */; };
 		16B54EC119EC34B2004F7BE9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16B54EBF19EC34B2004F7BE9 /* LaunchScreen.xib */; };
 		16B54ECD19EC34B2004F7BE9 /* FiltronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B54ECC19EC34B2004F7BE9 /* FiltronTests.swift */; };
+		16B54EDA19EC3C9D004F7BE9 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B54ED919EC3C9D004F7BE9 /* GalleryViewController.swift */; };
+		16B54EDC19EC4249004F7BE9 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B54EDB19EC4249004F7BE9 /* GalleryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +33,15 @@
 		16B54EB219EC34B2004F7BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16B54EB319EC34B2004F7BE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16B54EB619EC34B2004F7BE9 /* Filtron.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Filtron.xcdatamodel; sourceTree = "<group>"; };
-		16B54EB819EC34B2004F7BE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		16B54EB819EC34B2004F7BE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Filtron/ViewController.swift; sourceTree = "<group>"; };
 		16B54EBB19EC34B2004F7BE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16B54EBD19EC34B2004F7BE9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		16B54EC019EC34B2004F7BE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		16B54EC619EC34B2004F7BE9 /* FiltronTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiltronTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		16B54ECB19EC34B2004F7BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16B54ECC19EC34B2004F7BE9 /* FiltronTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltronTests.swift; sourceTree = "<group>"; };
+		16B54ED919EC3C9D004F7BE9 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		16B54EDB19EC4249004F7BE9 /* GalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,9 @@
 		16B54EA519EC34B2004F7BE9 = {
 			isa = PBXGroup;
 			children = (
+				16B54ED819EC34D3004F7BE9 /* Controller Layer */,
+				16B54ED719EC34CB004F7BE9 /* View Layer */,
+				16B54ED619EC34BD004F7BE9 /* Model Layer */,
 				16B54EB019EC34B2004F7BE9 /* Filtron */,
 				16B54EC919EC34B2004F7BE9 /* FiltronTests */,
 				16B54EAF19EC34B2004F7BE9 /* Products */,
@@ -80,10 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				16B54EB319EC34B2004F7BE9 /* AppDelegate.swift */,
-				16B54EB819EC34B2004F7BE9 /* ViewController.swift */,
-				16B54EBA19EC34B2004F7BE9 /* Main.storyboard */,
 				16B54EBD19EC34B2004F7BE9 /* Images.xcassets */,
-				16B54EBF19EC34B2004F7BE9 /* LaunchScreen.xib */,
 				16B54EB519EC34B2004F7BE9 /* Filtron.xcdatamodeld */,
 				16B54EB119EC34B2004F7BE9 /* Supporting Files */,
 			);
@@ -113,6 +117,33 @@
 				16B54ECB19EC34B2004F7BE9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		16B54ED619EC34BD004F7BE9 /* Model Layer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Model Layer";
+			path = Filtron;
+			sourceTree = "<group>";
+		};
+		16B54ED719EC34CB004F7BE9 /* View Layer */ = {
+			isa = PBXGroup;
+			children = (
+				16B54EBA19EC34B2004F7BE9 /* Main.storyboard */,
+				16B54EBF19EC34B2004F7BE9 /* LaunchScreen.xib */,
+				16B54EDB19EC4249004F7BE9 /* GalleryCell.swift */,
+			);
+			name = "View Layer";
+			sourceTree = "<group>";
+		};
+		16B54ED819EC34D3004F7BE9 /* Controller Layer */ = {
+			isa = PBXGroup;
+			children = (
+				16B54EB819EC34B2004F7BE9 /* ViewController.swift */,
+				16B54ED919EC3C9D004F7BE9 /* GalleryViewController.swift */,
+			);
+			name = "Controller Layer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +247,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				16B54EB919EC34B2004F7BE9 /* ViewController.swift in Sources */,
+				16B54EDC19EC4249004F7BE9 /* GalleryCell.swift in Sources */,
+				16B54EDA19EC3C9D004F7BE9 /* GalleryViewController.swift in Sources */,
 				16B54EB719EC34B2004F7BE9 /* Filtron.xcdatamodeld in Sources */,
 				16B54EB419EC34B2004F7BE9 /* AppDelegate.swift in Sources */,
 			);
@@ -246,6 +279,7 @@
 				16B54EBB19EC34B2004F7BE9 /* Base */,
 			);
 			name = Main.storyboard;
+			path = Filtron;
 			sourceTree = "<group>";
 		};
 		16B54EBF19EC34B2004F7BE9 /* LaunchScreen.xib */ = {
@@ -254,6 +288,7 @@
 				16B54EC019EC34B2004F7BE9 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = Filtron;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
