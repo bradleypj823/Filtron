@@ -35,6 +35,7 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     {
         super.viewDidLoad()
         self.generateThumbnail()
+        self.collectionView.dataSource = self
         
         var options = [kCIContextWorkingColorSpace : NSNull()]
         var myEAGLContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2) 
@@ -43,15 +44,15 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         var seeder = CoreDataSeeder(context: appDelegate.managedObjectContext!)
         
-        self.fetchFilters()
-        
         if self.filters.isEmpty
         {
            seeder.seedCoreData()
         }
         
+        self.fetchFilters()
         self.resetFilterThumbnails()
-        self.collectionView.dataSource = self
+        self.collectionView.reloadData()
+        self.resetFilterThumbnails()
     }
     
     override func viewWillAppear(animated: Bool)
@@ -63,6 +64,10 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     //MARK: Collection View methods
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
+        if self.filters.count == 0 {
+            println("i have not filters!!!")
+        }
+        
         return self.filters.count
     }
     
@@ -87,6 +92,11 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
             })
         }
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    {
+        
     }
     
     //MARK: Actions and alerts
