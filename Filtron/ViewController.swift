@@ -11,7 +11,7 @@ import CoreImage
 import CoreData
 import OpenGLES
 
-class ViewController: UIViewController, GalleryDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource
+class ViewController: UIViewController, GalleryDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate
 {
     //MARK: Outlets and Properties
     @IBOutlet weak var imageView: UIImageView!
@@ -21,10 +21,7 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     var context : CIContext?
     var originalThumbnail : UIImage?
     
-    //core data array
     var filters = [Filter]()
-    
-    //array of thumbnail wrapper objects
     var filterThumbnails = [FilterThumbnail]()
     
     var delegate : GalleryDelegate?
@@ -36,6 +33,8 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         super.viewDidLoad()
         self.generateThumbnail()
         self.collectionView.dataSource = self
+        self.imageQueue.maxConcurrentOperationCount = 7
+        self.collectionView.delegate = self
         
         var options = [kCIContextWorkingColorSpace : NSNull()]
         var myEAGLContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2) 
@@ -44,12 +43,14 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         var seeder = CoreDataSeeder(context: appDelegate.managedObjectContext!)
         
-        if self.filters.isEmpty
+        self.fetchFilters()
+        
+        if self.filters.count == 0
         {
-           seeder.seedCoreData()
+            seeder.seedCoreData()
+            self.fetchFilters()
         }
         
-        self.fetchFilters()
         self.resetFilterThumbnails()
         self.collectionView.reloadData()
         self.resetFilterThumbnails()
@@ -96,7 +97,25 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
-        
+        self.imageQueue.addOperationWithBlock(
+        { () -> Void in
+            var image = CIImage(image: self.imageView.image)
+            var imageFilter = CIFilter(name: self.filters[indexPath.row].name)
+            imageFilter.setDefaults()
+            imageFilter.setValue(image, forKey: kCIInputImageKey)
+            
+            //generate the results
+            var result = imageFilter.valueForKey(kCIOutputImageKey) as CIImage
+            var extent = result.extent()
+            var imageRef = self.context!.createCGImage(result, fromRect: extent)
+            
+            NSOperationQueue.mainQueue().addOperationWithBlock(
+                { () -> Void in
+                    var filteredImage = UIImage(CGImage: imageRef)
+                    self.imageView.image = filteredImage
+                    self.exitFilteringMode()
+                })
+        })
     }
     
     //MARK: Actions and alerts
@@ -159,7 +178,8 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
     {
-        self.imageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
+        let returnedImage = info[UIImagePickerControllerEditedImage] as? UIImage
+        self.imageView.image = returnedImage
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -173,7 +193,7 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     
     //MARK: - Other Functions
     
-    func generateThumbnail ()
+    func generateThumbnail()
     {
         let size = CGSize(width: 100, height: 100)
         UIGraphicsBeginImageContext(size)
