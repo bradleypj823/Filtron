@@ -16,6 +16,10 @@
 		16B54ECD19EC34B2004F7BE9 /* FiltronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B54ECC19EC34B2004F7BE9 /* FiltronTests.swift */; };
 		16B54EDA19EC3C9D004F7BE9 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B54ED919EC3C9D004F7BE9 /* GalleryViewController.swift */; };
 		16B54EDC19EC4249004F7BE9 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B54EDB19EC4249004F7BE9 /* GalleryCell.swift */; };
+		16C9C66F19EDDA9B0039750F /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9C66E19EDDA9B0039750F /* Filter.swift */; };
+		16C9C67119EDDC8D0039750F /* FilterThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9C67019EDDC8D0039750F /* FilterThumbnail.swift */; };
+		16C9C67319EDE7310039750F /* CoreDataSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9C67219EDE7310039750F /* CoreDataSeeder.swift */; };
+		16C9C67519EDED520039750F /* FilterThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9C67419EDED520039750F /* FilterThumbnailCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,11 @@
 		16B54ECC19EC34B2004F7BE9 /* FiltronTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltronTests.swift; sourceTree = "<group>"; };
 		16B54ED919EC3C9D004F7BE9 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		16B54EDB19EC4249004F7BE9 /* GalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		16C9C66A19EDDA480039750F /* Filtron-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Filtron-Bridging-Header.h"; sourceTree = "<group>"; };
+		16C9C66E19EDDA9B0039750F /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		16C9C67019EDDC8D0039750F /* FilterThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterThumbnail.swift; sourceTree = "<group>"; };
+		16C9C67219EDE7310039750F /* CoreDataSeeder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSeeder.swift; sourceTree = "<group>"; };
+		16C9C67419EDED520039750F /* FilterThumbnailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterThumbnailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +98,9 @@
 				16B54EB319EC34B2004F7BE9 /* AppDelegate.swift */,
 				16B54EBD19EC34B2004F7BE9 /* Images.xcassets */,
 				16B54EB519EC34B2004F7BE9 /* Filtron.xcdatamodeld */,
+				16C9C66E19EDDA9B0039750F /* Filter.swift */,
 				16B54EB119EC34B2004F7BE9 /* Supporting Files */,
+				16C9C66A19EDDA480039750F /* Filtron-Bridging-Header.h */,
 			);
 			path = Filtron;
 			sourceTree = "<group>";
@@ -122,6 +133,8 @@
 		16B54ED619EC34BD004F7BE9 /* Model Layer */ = {
 			isa = PBXGroup;
 			children = (
+				16C9C67019EDDC8D0039750F /* FilterThumbnail.swift */,
+				16C9C67219EDE7310039750F /* CoreDataSeeder.swift */,
 			);
 			name = "Model Layer";
 			path = Filtron;
@@ -133,6 +146,7 @@
 				16B54EBA19EC34B2004F7BE9 /* Main.storyboard */,
 				16B54EBF19EC34B2004F7BE9 /* LaunchScreen.xib */,
 				16B54EDB19EC4249004F7BE9 /* GalleryCell.swift */,
+				16C9C67419EDED520039750F /* FilterThumbnailCell.swift */,
 			);
 			name = "View Layer";
 			sourceTree = "<group>";
@@ -246,11 +260,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C9C67519EDED520039750F /* FilterThumbnailCell.swift in Sources */,
 				16B54EB919EC34B2004F7BE9 /* ViewController.swift in Sources */,
+				16C9C66F19EDDA9B0039750F /* Filter.swift in Sources */,
+				16C9C67319EDE7310039750F /* CoreDataSeeder.swift in Sources */,
 				16B54EDC19EC4249004F7BE9 /* GalleryCell.swift in Sources */,
 				16B54EDA19EC3C9D004F7BE9 /* GalleryViewController.swift in Sources */,
 				16B54EB719EC34B2004F7BE9 /* Filtron.xcdatamodeld in Sources */,
 				16B54EB419EC34B2004F7BE9 /* AppDelegate.swift in Sources */,
+				16C9C67119EDDC8D0039750F /* FilterThumbnail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,9 +395,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Filtron/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Filtron/Filtron-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -387,9 +408,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Filtron/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Filtron/Filtron-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -446,6 +469,7 @@
 				16B54ED219EC34B2004F7BE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		16B54ED319EC34B2004F7BE9 /* Build configuration list for PBXNativeTarget "FiltronTests" */ = {
 			isa = XCConfigurationList;
@@ -454,6 +478,7 @@
 				16B54ED519EC34B2004F7BE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -28,6 +28,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidLoad()
         
         self.collectionView.dataSource = self
+        self.collectionView.delegate = self
     }
     
     //MARK: CollectionView Methods
@@ -61,10 +62,12 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath)
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
         var cell = collectionView.cellForItemAtIndexPath(indexPath) as GalleryCell
         var image = cell.imageView.image
+        println("Tapped cell.")
         self.delegate?.didTapOnPicture(image!)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
