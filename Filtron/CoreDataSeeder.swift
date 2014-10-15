@@ -27,6 +27,18 @@ class CoreDataSeeder
         gaussianBlur.name = "CIGaussianBlur"
         gaussianBlur.favorite = true
         
+//        var pixellate = NSEntityDescription.insertNewObjectForEntityForName("Filter", inManagedObjectContext: managedObjectContext) as Filter
+//        pixellate.name = "CIPixellate"
+//        
+//        var chrome = NSEntityDescription.insertNewObjectForEntityForName("Filter", inManagedObjectContext: managedObjectContext) as Filter
+//        pixellate.name = "CIPhotoEffectChrome"
+//        
+//        var mono = NSEntityDescription.insertNewObjectForEntityForName("Filter", inManagedObjectContext: managedObjectContext) as Filter
+//        pixellate.name = "CIPhotoEffectMono"
+//        
+//        var exposureAdjust = NSEntityDescription.insertNewObjectForEntityForName("Filter", inManagedObjectContext: managedObjectContext) as Filter
+//        pixellate.name = "CIExposureAdjust"
+        
         var error: NSError?
         self.managedObjectContext?.save(&error)
         

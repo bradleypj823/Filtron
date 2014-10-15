@@ -45,7 +45,7 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         
         self.fetchFilters()
         
-        if self.filters.count == 0
+        if self.filters.isEmpty
         {
            seeder.seedCoreData()
         }
@@ -156,6 +156,9 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     func didTapOnPicture(image: UIImage)
     {
         self.imageView.image = image
+        self.generateThumbnail()
+        self.resetFilterThumbnails()
+        self.collectionView.reloadData()
     }
     
     //MARK: - Other Functions
@@ -200,7 +203,11 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     
     func enterFilterMode()
     {
-        self.collectionViewBottomConstraint.constant += 120
+        self.generateThumbnail()
+        self.resetFilterThumbnails()
+        self.collectionView.reloadData()
+        self.collectionViewBottomConstraint.constant += self.collectionView.frame.height
+        self.imageView.userInteractionEnabled = false
         
         UIView.animateWithDuration(0.4, animations:
         { () -> Void in
@@ -211,11 +218,18 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         self.navigationItem.rightBarButtonItem = doneButton
     }
     
-    func exitFilteringMode () {
+    func exitFilteringMode ()
+    {
+        self.collectionViewBottomConstraint.constant -= self.collectionView.frame.height
         
-        //reset the contraints back to normal values
+        UIView.animateWithDuration(0.4, animations:
+        { () -> Void in
+                self.view.layoutIfNeeded()
+        })
+        
         //remove the Done button
         self.navigationItem.rightBarButtonItem = nil
+        self.imageView.userInteractionEnabled = true
     }
 }
 
