@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="ekP-zC-emg">
-                                <rect key="frame" x="15" y="-70" width="570" height="570"/>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="ekP-zC-emg">
+                                <rect key="frame" x="15" y="15" width="570" height="570"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -36,9 +36,6 @@
                                 <rect key="frame" x="0.0" y="600" width="607" height="120"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="Ta4-6z-PD7"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jYd-pM-0lj">
                                     <size key="itemSize" width="85" height="85"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -50,11 +47,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TJ3-7g-MXx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TJ3-7g-MXx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -75,19 +72,22 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fTr-YJ-I8x" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="4xR-qr-yKK"/>
+                            <constraint firstAttribute="centerY" secondItem="ekP-zC-emg" secondAttribute="centerY" id="5Ah-Qx-2ja"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fTr-YJ-I8x" secondAttribute="bottom" constant="-120" id="LcK-cL-glb"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ekP-zC-emg" secondAttribute="leading" multiplier="0.8" id="RPz-ZZ-dgP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fTr-YJ-I8x" secondAttribute="trailing" constant="-23" id="fTd-8a-hIt"/>
                             <constraint firstItem="ekP-zC-emg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="hrv-PU-sW7"/>
                             <constraint firstAttribute="centerX" secondItem="ekP-zC-emg" secondAttribute="centerX" id="i6S-af-ZUB"/>
-                            <constraint firstItem="fTr-YJ-I8x" firstAttribute="top" secondItem="ekP-zC-emg" secondAttribute="bottom" multiplier="1.2" id="qpl-2N-BFI"/>
+                            <constraint firstItem="fTr-YJ-I8x" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.2" id="jeQ-ML-X7j"/>
                             <constraint firstItem="ekP-zC-emg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.95" id="t0x-hf-1AG"/>
                             <constraint firstItem="fTr-YJ-I8x" firstAttribute="top" secondItem="ekP-zC-emg" secondAttribute="bottom" constant="8" id="tWi-SL-kyf"/>
+                            <constraint firstItem="fTr-YJ-I8x" firstAttribute="top" secondItem="wfy-db-euE" secondAttribute="bottom" id="uEn-0j-ud8"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="RPz-ZZ-dgP"/>
                                 <exclude reference="hrv-PU-sW7"/>
+                                <exclude reference="LcK-cL-glb"/>
                                 <exclude reference="tWi-SL-kyf"/>
                             </mask>
                         </variation>
@@ -97,7 +97,6 @@
                                 <include reference="hrv-PU-sW7"/>
                                 <exclude reference="i6S-af-ZUB"/>
                                 <exclude reference="t0x-hf-1AG"/>
-                                <exclude reference="qpl-2N-BFI"/>
                                 <include reference="tWi-SL-kyf"/>
                             </mask>
                         </variation>
@@ -105,7 +104,7 @@
                     <navigationItem key="navigationItem" id="Obe-6P-AuP"/>
                     <connections>
                         <outlet property="collectionView" destination="fTr-YJ-I8x" id="oNq-av-cue"/>
-                        <outlet property="collectionViewBottomConstraint" destination="LcK-cL-glb" id="OBh-6P-8BN"/>
+                        <outlet property="collectionViewBottomConstraint" destination="uEn-0j-ud8" id="Qjv-LF-HKv"/>
                         <outlet property="imageView" destination="ekP-zC-emg" id="nN4-dg-g25"/>
                         <segue destination="JZi-Vd-VUO" kind="presentation" identifier="SHOW_GALLERY" id="a3i-y5-pey"/>
                     </connections>

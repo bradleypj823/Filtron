@@ -18,6 +18,7 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
     
+    var uneditedImage : UIImage?
     var context : CIContext?
     var originalThumbnail : UIImage?
     
@@ -54,6 +55,11 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         self.resetFilterThumbnails()
         self.collectionView.reloadData()
         self.resetFilterThumbnails()
+        
+        self.uneditedImage = self.imageView.image
+        self.imageView.layer.cornerRadius = self.imageView.frame.size.width / 16
+        self.imageView.layer.masksToBounds = true
+        
     }
     
     override func viewWillAppear(animated: Bool)
@@ -99,7 +105,7 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     {
         self.imageQueue.addOperationWithBlock(
         { () -> Void in
-            var image = CIImage(image: self.imageView.image)
+            var image = CIImage(image: self.uneditedImage)
             var imageFilter = CIFilter(name: self.filters[indexPath.row].name)
             imageFilter.setDefaults()
             imageFilter.setValue(image, forKey: kCIInputImageKey)
@@ -113,7 +119,6 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
                 { () -> Void in
                     var filteredImage = UIImage(CGImage: imageRef)
                     self.imageView.image = filteredImage
-                    self.exitFilteringMode()
                 })
         })
     }
@@ -180,12 +185,14 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     {
         let returnedImage = info[UIImagePickerControllerEditedImage] as? UIImage
         self.imageView.image = returnedImage
+        self.uneditedImage = returnedImage
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func didTapOnPicture(image: UIImage)
     {
         self.imageView.image = image
+        self.uneditedImage = image
         self.generateThumbnail()
         self.resetFilterThumbnails()
         self.collectionView.reloadData()
@@ -236,7 +243,7 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         self.generateThumbnail()
         self.resetFilterThumbnails()
         self.collectionView.reloadData()
-        self.collectionViewBottomConstraint.constant += self.collectionView.frame.height
+        self.collectionViewBottomConstraint.constant -= self.collectionView.frame.height
         self.imageView.userInteractionEnabled = false
         
         UIView.animateWithDuration(0.4, animations:
@@ -245,20 +252,42 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         })
         
         var doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "exitFilteringMode")
+        var cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Done, target: self, action: "cancelFilteringMode")
         self.navigationItem.rightBarButtonItem = doneButton
+        self.navigationItem.leftBarButtonItem = cancelButton
     }
     
-    func exitFilteringMode ()
+    func completeFilteringMode ()
     {
-        self.collectionViewBottomConstraint.constant -= self.collectionView.frame.height
+        self.collectionViewBottomConstraint.constant += self.collectionView.frame.height
         
         UIView.animateWithDuration(0.4, animations:
         { () -> Void in
                 self.view.layoutIfNeeded()
         })
         
+        self.uneditedImage = self.imageView.image
+        
         //remove the Done button
         self.navigationItem.rightBarButtonItem = nil
+        self.navigationItem.leftBarButtonItem = nil
+        self.imageView.userInteractionEnabled = true
+    }
+    
+    func cancelFilteringMode ()
+    {
+        self.collectionViewBottomConstraint.constant += self.collectionView.frame.height
+        
+        UIView.animateWithDuration(0.4, animations:
+            { () -> Void in
+                self.view.layoutIfNeeded()
+        })
+        
+        self.imageView.image = self.uneditedImage
+        
+        //remove the Done button
+        self.navigationItem.rightBarButtonItem = nil
+        self.navigationItem.leftBarButtonItem = nil
         self.imageView.userInteractionEnabled = true
     }
 }
