@@ -93,6 +93,7 @@
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
+                                <exclude reference="5Ah-Qx-2ja"/>
                                 <include reference="RPz-ZZ-dgP"/>
                                 <include reference="hrv-PU-sW7"/>
                                 <exclude reference="i6S-af-ZUB"/>
