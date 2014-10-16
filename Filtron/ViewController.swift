@@ -83,9 +83,6 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FILTER_CELL", forIndexPath: indexPath) as FilterThumbnailCell
         var filterThumbnail = self.filterThumbnails[indexPath.row]
         
-        //cell.layer.bounds.height = self.collectionView.layer.bounds.height! * 0.8
-        // ^ why doesn't this work????
-        
         if filterThumbnail.filteredThumbnail != nil
         {
             cell.imageView.image = filterThumbnail.filteredThumbnail
