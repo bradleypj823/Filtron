@@ -251,7 +251,7 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
             self.view.layoutIfNeeded()
         })
         
-        var doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "exitFilteringMode")
+        var doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "completeFilteringMode")
         var cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Done, target: self, action: "cancelFilteringMode")
         self.navigationItem.rightBarButtonItem = doneButton
         self.navigationItem.leftBarButtonItem = cancelButton
@@ -259,33 +259,30 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     
     func completeFilteringMode ()
     {
-        self.collectionViewBottomConstraint.constant += self.collectionView.frame.height
-        
-        UIView.animateWithDuration(0.4, animations:
-        { () -> Void in
-                self.view.layoutIfNeeded()
-        })
-        
         self.uneditedImage = self.imageView.image
-        
-        //remove the Done button
-        self.navigationItem.rightBarButtonItem = nil
-        self.navigationItem.leftBarButtonItem = nil
-        self.imageView.userInteractionEnabled = true
+        self.exitFilteringMode()
+        self.returnToDefaultState()
     }
     
     func cancelFilteringMode ()
     {
+        self.imageView.image = self.uneditedImage
+        self.exitFilteringMode()
+        self.returnToDefaultState()
+    }
+    
+    func exitFilteringMode ()
+    {
         self.collectionViewBottomConstraint.constant += self.collectionView.frame.height
         
         UIView.animateWithDuration(0.4, animations:
-            { () -> Void in
-                self.view.layoutIfNeeded()
+        { () -> Void in
+            self.view.layoutIfNeeded()
         })
-        
-        self.imageView.image = self.uneditedImage
-        
-        //remove the Done button
+    }
+    
+    func returnToDefaultState ()
+    {
         self.navigationItem.rightBarButtonItem = nil
         self.navigationItem.leftBarButtonItem = nil
         self.imageView.userInteractionEnabled = true
