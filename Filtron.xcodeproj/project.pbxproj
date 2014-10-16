@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1615112F19F074E000655FD7 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615112E19F074E000655FD7 /* PhotoLibraryViewController.swift */; };
 		16B54EB419EC34B2004F7BE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B54EB319EC34B2004F7BE9 /* AppDelegate.swift */; };
 		16B54EB719EC34B2004F7BE9 /* Filtron.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16B54EB519EC34B2004F7BE9 /* Filtron.xcdatamodeld */; };
 		16B54EB919EC34B2004F7BE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B54EB819EC34B2004F7BE9 /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1615112E19F074E000655FD7 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		16B54EAE19EC34B2004F7BE9 /* Filtron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filtron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16B54EB219EC34B2004F7BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16B54EB319EC34B2004F7BE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				16B54EB819EC34B2004F7BE9 /* ViewController.swift */,
 				16B54ED919EC3C9D004F7BE9 /* GalleryViewController.swift */,
+				1615112E19F074E000655FD7 /* PhotoLibraryViewController.swift */,
 			);
 			name = "Controller Layer";
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			files = (
 				16C9C67519EDED520039750F /* FilterThumbnailCell.swift in Sources */,
 				16B54EB919EC34B2004F7BE9 /* ViewController.swift in Sources */,
+				1615112F19F074E000655FD7 /* PhotoLibraryViewController.swift in Sources */,
 				16C9C66F19EDDA9B0039750F /* Filter.swift in Sources */,
 				16C9C67319EDE7310039750F /* CoreDataSeeder.swift in Sources */,
 				16B54EDC19EC4249004F7BE9 /* GalleryCell.swift in Sources */,

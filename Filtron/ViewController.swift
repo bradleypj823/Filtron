@@ -135,12 +135,7 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         
         let photoLibraryAction = UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Default)
         { (action) -> Void in
-            let imagePicker = UIImagePickerController()
-            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
-            imagePicker.allowsEditing = true
-            imagePicker.delegate = self
-            
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            self.performSegueWithIdentifier("SHOW_PHOTO_GALLERY", sender: self)
         }
         
         let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default)
@@ -177,6 +172,11 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         if (segue.identifier == "SHOW_GALLERY")
         {
             var destinationVC = segue.destinationViewController as GalleryViewController
+            destinationVC.delegate = self
+        }
+        if (segue.identifier == "SHOW_PHOTO_GALLERY")
+        {
+            var destinationVC = segue.destinationViewController as PhotoLibraryViewController
             destinationVC.delegate = self
         }
     }
