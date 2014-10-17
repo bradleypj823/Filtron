@@ -10,6 +10,11 @@ import UIKit
 import CoreImage
 import CoreData
 import OpenGLES
+import AVFoundation
+import CoreMedia
+import CoreVideo
+import ImageIO
+import QuartzCore
 
 class ViewController: UIViewController, GalleryDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate
 {
@@ -17,6 +22,7 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var capturePreviewImageView: UIImageView!
     
     var uneditedImage : UIImage?
     var context : CIContext?
@@ -27,6 +33,8 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     
     var delegate : GalleryDelegate?
     let imageQueue = NSOperationQueue()
+    
+    var stillImageOutput = AVCaptureStillImageOutput()
 
     //MARK: - View methods
     override func viewDidLoad()
@@ -60,6 +68,32 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         self.imageView.layer.cornerRadius = self.imageView.frame.size.width / 16
         self.imageView.layer.masksToBounds = true
         
+        //AV Foundation Camera
+//        let devices = AVCaptureDevice.devices()
+//        println(devices)
+//        
+//        if devices.isEmpty
+//        {
+//            var captureSession = AVCaptureSession()
+//            captureSession.sessionPreset = AVCaptureSessionPresetPhoto
+//            var previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+//            previewLayer.frame = CGRectMake(0, 64, self.view.frame.size.width, CGFloat(self.view.frame.size.height * 0.6))
+//            self.view.layer.addSublayer(previewLayer)
+//            
+//            var device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+//            var error : NSError?
+//            var input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as AVCaptureDeviceInput!
+//            if input == nil
+//            {
+//                println("bad!")
+//            }
+//            
+//            captureSession.addInput(input)
+//            var outputSettings = [AVVideoCodecKey : AVVideoCodecJPEG]
+//            self.stillImageOutput.outputSettings = outputSettings
+//            captureSession.addOutput(self.stillImageOutput)
+//            captureSession.startRunning()
+//        }
     }
     
     override func viewWillAppear(animated: Bool)
@@ -147,6 +181,11 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
                 
                 self.presentViewController(imagePicker, animated: true, completion: nil)
         }
+        
+//        let avCameraAction = UIAlertAction(title: "AV Foundation", style: UIAlertActionStyle.Default)
+//        { (action) -> Void in
+//            self.capturePressed()
+//        }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel)
         { (action) -> Void in
@@ -287,5 +326,41 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         self.navigationItem.leftBarButtonItem = nil
         self.imageView.userInteractionEnabled = true
     }
+    
+//    func capturePressed()
+//    {
+//        var videoConnection : AVCaptureConnection?
+//        for connection in self.stillImageOutput.connections
+//        {
+//            if let cameraConnection = connection as? AVCaptureConnection
+//            {
+//                for port in cameraConnection.inputPorts
+//                {
+//                    if let videoPort = port as? AVCaptureInputPort
+//                    {
+//                        if videoPort.mediaType == AVMediaTypeVideo
+//                        {
+//                            videoConnection = cameraConnection
+//                            break;
+//                        }
+//                    }
+//                }
+//            }
+//            if videoConnection != nil
+//            {
+//                break;
+//            }
+//        }
+//        self.stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler:
+//        {(buffer : CMSampleBuffer!, error : NSError!) -> Void in
+//            var data = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+//            var image = UIImage(data: data)
+//            self.capturePreviewImageView.image = image
+//            println(image.size)
+//        })
+//        
+//        
+//    }
+
 }
 

@@ -8,20 +8,25 @@
 
 import UIKit
 import Photos
+import AVFoundation
+import CoreMedia
+import CoreVideo
+import ImageIO
+import QuartzCore
 
 class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource
 {
     //MARK: - Outlets and Properties
     @IBOutlet weak var collectionView: UICollectionView!
     let imageQueue = NSOperationQueue()
-    var backgroundImage : UIImage!
-    
-    var assetFetchResults: PHFetchResult!
+    var flowlayout : UICollectionViewFlowLayout!
     var assetCollection: PHAssetCollection!
     var imageManager: PHCachingImageManager!
+    var assetFetchResults: PHFetchResult!
     var assetCellSize: CGSize!
-    
     var delegate : GalleryDelegate?
+    
+    var stillImageOutput = AVCaptureStillImageOutput()
     
     //MARK: - View Methods
     override func viewDidLoad()
@@ -32,8 +37,12 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
         self.assetFetchResults = PHAsset.fetchAssetsWithOptions(nil)
         
         var scale = UIScreen.mainScreen().scale
-        var flowLayout = self.collectionView.collectionViewLayout as UICollectionViewFlowLayout
-        var cellSize = flowLayout.itemSize
+        self.flowlayout = self.collectionView.collectionViewLayout as UICollectionViewFlowLayout
+        var cellSize = flowlayout.itemSize
+        
+        //Pinch recognizer
+        var pinch = UIPinchGestureRecognizer(target: self, action: "pinchAction:")
+        self.collectionView.addGestureRecognizer(pinch)
         
         self.assetCellSize = CGSize(width: cellSize.width * scale, height: cellSize.height * scale)
         
@@ -85,6 +94,34 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
             return ()
         }
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    //MARK: - Actions
+    
+    func pinchAction(pinch : UIPinchGestureRecognizer)
+    {
+        println("Observing pinch...")
+        
+        
+        if pinch.state == UIGestureRecognizerState.Ended
+        {
+            println("...pinch ended.")
+            println(pinch.velocity)
+            self.collectionView.performBatchUpdates(
+            { () -> Void in
+                if pinch.velocity > 0
+                {
+                    self.flowlayout.itemSize = CGSize(width: self.flowlayout.itemSize.width * 2, height: self.flowlayout.itemSize.height * 2)
+                    println(self.flowlayout.itemSize.width)
+                }
+                else
+                {
+                    self.flowlayout.itemSize = CGSize(width: self.flowlayout.itemSize.width * 0.5, height: self.flowlayout.itemSize.height * 0.5)
+                    println(self.flowlayout.itemSize.width)
+                }
+            }, completion: nil )
+        }
+        
     }
     
     //MARK: - Not sure if I need this.

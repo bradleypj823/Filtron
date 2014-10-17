@@ -68,13 +68,22 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l6q-vz-UhO">
+                                <rect key="frame" x="9" y="72" width="568" height="456"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="l6q-vz-UhO" secondAttribute="height" multiplier="1:1" constant="112" id="9FB-Ft-xFx"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fTr-YJ-I8x" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="4xR-qr-yKK"/>
                             <constraint firstAttribute="centerY" secondItem="ekP-zC-emg" secondAttribute="centerY" id="5Ah-Qx-2ja"/>
+                            <constraint firstItem="l6q-vz-UhO" firstAttribute="height" secondItem="ekP-zC-emg" secondAttribute="height" multiplier="0.8" id="9GW-iX-c5V"/>
+                            <constraint firstItem="ekP-zC-emg" firstAttribute="centerY" secondItem="l6q-vz-UhO" secondAttribute="centerY" id="BOp-2j-ixJ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fTr-YJ-I8x" secondAttribute="bottom" constant="-120" id="LcK-cL-glb"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ekP-zC-emg" secondAttribute="leading" multiplier="0.8" id="RPz-ZZ-dgP"/>
+                            <constraint firstItem="ekP-zC-emg" firstAttribute="centerX" secondItem="l6q-vz-UhO" secondAttribute="centerX" constant="7" id="fPp-1Q-b2W"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fTr-YJ-I8x" secondAttribute="trailing" constant="-23" id="fTd-8a-hIt"/>
                             <constraint firstItem="ekP-zC-emg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="hrv-PU-sW7"/>
                             <constraint firstAttribute="centerX" secondItem="ekP-zC-emg" secondAttribute="centerX" id="i6S-af-ZUB"/>
@@ -104,6 +113,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Obe-6P-AuP"/>
                     <connections>
+                        <outlet property="capturePreviewImageView" destination="l6q-vz-UhO" id="jnL-bs-Cwh"/>
                         <outlet property="collectionView" destination="fTr-YJ-I8x" id="oNq-av-cue"/>
                         <outlet property="collectionViewBottomConstraint" destination="uEn-0j-ud8" id="Qjv-LF-HKv"/>
                         <outlet property="imageView" destination="ekP-zC-emg" id="nN4-dg-g25"/>
