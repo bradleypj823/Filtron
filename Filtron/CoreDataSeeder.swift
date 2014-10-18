@@ -23,10 +23,6 @@ class CoreDataSeeder
         var sepia = NSEntityDescription.insertNewObjectForEntityForName("Filter", inManagedObjectContext: self.managedObjectContext) as Filter
         sepia.name = "CISepiaTone"
         
-        var gaussianBlur = NSEntityDescription.insertNewObjectForEntityForName("Filter", inManagedObjectContext: self.managedObjectContext) as Filter
-        gaussianBlur.name = "CIGaussianBlur"
-        gaussianBlur.favorite = true
-        
         var pixellate = NSEntityDescription.insertNewObjectForEntityForName("Filter", inManagedObjectContext: managedObjectContext) as Filter
         pixellate.name = "CIPixellate"
         
@@ -38,6 +34,12 @@ class CoreDataSeeder
         
         var exposureAdjust = NSEntityDescription.insertNewObjectForEntityForName("Filter", inManagedObjectContext: managedObjectContext) as Filter
         exposureAdjust.name = "CIExposureAdjust"
+        
+        var hueAdjust = NSEntityDescription.insertNewObjectForEntityForName("Filter", inManagedObjectContext: managedObjectContext) as Filter
+        hueAdjust.name = "CIHueAdjust"
+        
+        var gammaAdjust = NSEntityDescription.insertNewObjectForEntityForName("Filter", inManagedObjectContext: managedObjectContext) as Filter
+        gammaAdjust.name = "CIGammaAdjust"
         
         var error: NSError?
         self.managedObjectContext?.save(&error)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1615112F19F074E000655FD7 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615112E19F074E000655FD7 /* PhotoLibraryViewController.swift */; };
+		166A5A7919F1D50D0003E68D /* AVFoundationCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166A5A7819F1D50D0003E68D /* AVFoundationCameraViewController.swift */; };
 		16B54EB419EC34B2004F7BE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B54EB319EC34B2004F7BE9 /* AppDelegate.swift */; };
 		16B54EB719EC34B2004F7BE9 /* Filtron.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16B54EB519EC34B2004F7BE9 /* Filtron.xcdatamodeld */; };
 		16B54EB919EC34B2004F7BE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B54EB819EC34B2004F7BE9 /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		1615112E19F074E000655FD7 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		166A5A7819F1D50D0003E68D /* AVFoundationCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVFoundationCameraViewController.swift; sourceTree = "<group>"; };
 		16B54EAE19EC34B2004F7BE9 /* Filtron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filtron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16B54EB219EC34B2004F7BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16B54EB319EC34B2004F7BE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				16B54EB819EC34B2004F7BE9 /* ViewController.swift */,
 				16B54ED919EC3C9D004F7BE9 /* GalleryViewController.swift */,
 				1615112E19F074E000655FD7 /* PhotoLibraryViewController.swift */,
+				166A5A7819F1D50D0003E68D /* AVFoundationCameraViewController.swift */,
 			);
 			name = "Controller Layer";
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				166A5A7919F1D50D0003E68D /* AVFoundationCameraViewController.swift in Sources */,
 				16C9C67519EDED520039750F /* FilterThumbnailCell.swift in Sources */,
 				16B54EB919EC34B2004F7BE9 /* ViewController.swift in Sources */,
 				1615112F19F074E000655FD7 /* PhotoLibraryViewController.swift in Sources */,

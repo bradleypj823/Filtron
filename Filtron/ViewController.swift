@@ -15,6 +15,9 @@ import CoreMedia
 import CoreVideo
 import ImageIO
 import QuartzCore
+import Social
+import Accounts
+import Photos
 
 class ViewController: UIViewController, GalleryDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate
 {
@@ -35,11 +38,13 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
     let imageQueue = NSOperationQueue()
     
     var stillImageOutput = AVCaptureStillImageOutput()
+    
 
     //MARK: - View methods
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         self.generateThumbnail()
         self.collectionView.dataSource = self
         self.imageQueue.maxConcurrentOperationCount = 7
@@ -67,33 +72,6 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         self.uneditedImage = self.imageView.image
         self.imageView.layer.cornerRadius = self.imageView.frame.size.width / 16
         self.imageView.layer.masksToBounds = true
-        
-        //AV Foundation Camera
-//        let devices = AVCaptureDevice.devices()
-//        println(devices)
-//        
-//        if devices.isEmpty
-//        {
-//            var captureSession = AVCaptureSession()
-//            captureSession.sessionPreset = AVCaptureSessionPresetPhoto
-//            var previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-//            previewLayer.frame = CGRectMake(0, 64, self.view.frame.size.width, CGFloat(self.view.frame.size.height * 0.6))
-//            self.view.layer.addSublayer(previewLayer)
-//            
-//            var device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-//            var error : NSError?
-//            var input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as AVCaptureDeviceInput!
-//            if input == nil
-//            {
-//                println("bad!")
-//            }
-//            
-//            captureSession.addInput(input)
-//            var outputSettings = [AVVideoCodecKey : AVVideoCodecJPEG]
-//            self.stillImageOutput.outputSettings = outputSettings
-//            captureSession.addOutput(self.stillImageOutput)
-//            captureSession.startRunning()
-//        }
     }
     
     override func viewWillAppear(animated: Bool)
@@ -182,14 +160,29 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
                 self.presentViewController(imagePicker, animated: true, completion: nil)
         }
         
-//        let avCameraAction = UIAlertAction(title: "AV Foundation", style: UIAlertActionStyle.Default)
-//        { (action) -> Void in
-//            self.capturePressed()
-//        }
+        let avCameraAction = UIAlertAction(title: "AV Foundation", style: UIAlertActionStyle.Default)
+        { (action) -> Void in
+            self.performSegueWithIdentifier("OPEN_AV_CAMERA", sender: self)
+        }
+        
+        let twitterShare = UIAlertAction(title: "Share to Twitter", style: UIAlertActionStyle.Default)
+        { (action) -> Void in
+            self.composeForTwitter()
+        }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel)
         { (action) -> Void in
             
+        }
+        
+        let exportPhoto = UIAlertAction(title: "Save to Library", style: UIAlertActionStyle.Default)
+        { (action) -> Void in
+            let library = PHPhotoLibrary.sharedPhotoLibrary()
+            library.performChanges(
+            { () -> Void in
+                PHAssetChangeRequest.creationRequestForAssetFromImage(self.imageView.image)
+                return()
+            }, completionHandler: nil)
         }
         
         let filterAction = UIAlertAction(title: "Filters", style: UIAlertActionStyle.Default)
@@ -200,7 +193,10 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         alertController.addAction(randomImageAction)
         alertController.addAction(photoLibraryAction)
         alertController.addAction(cameraAction)
+        alertController.addAction(avCameraAction)
         alertController.addAction(filterAction)
+        alertController.addAction(exportPhoto)
+        alertController.addAction(twitterShare)
         alertController.addAction(cancelAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -327,40 +323,16 @@ class ViewController: UIViewController, GalleryDelegate, UIImagePickerController
         self.imageView.userInteractionEnabled = true
     }
     
-//    func capturePressed()
-//    {
-//        var videoConnection : AVCaptureConnection?
-//        for connection in self.stillImageOutput.connections
-//        {
-//            if let cameraConnection = connection as? AVCaptureConnection
-//            {
-//                for port in cameraConnection.inputPorts
-//                {
-//                    if let videoPort = port as? AVCaptureInputPort
-//                    {
-//                        if videoPort.mediaType == AVMediaTypeVideo
-//                        {
-//                            videoConnection = cameraConnection
-//                            break;
-//                        }
-//                    }
-//                }
-//            }
-//            if videoConnection != nil
-//            {
-//                break;
-//            }
-//        }
-//        self.stillImageOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler:
-//        {(buffer : CMSampleBuffer!, error : NSError!) -> Void in
-//            var data = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
-//            var image = UIImage(data: data)
-//            self.capturePreviewImageView.image = image
-//            println(image.size)
-//        })
-//        
-//        
-//    }
+    func composeForTwitter()
+    {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)
+        {
+            var tweetFor = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            tweetFor.setInitialText("Check out my fake pic!")
+            tweetFor.addImage(self.imageView.image)
+            self.presentViewController(tweetFor, animated: true, completion: nil)
+        }
+    }
 
 }
 

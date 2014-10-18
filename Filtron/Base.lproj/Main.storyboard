@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A386b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ccX-uo-jM7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A388b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ccX-uo-jM7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -119,11 +119,72 @@
                         <outlet property="imageView" destination="ekP-zC-emg" id="nN4-dg-g25"/>
                         <segue destination="JZi-Vd-VUO" kind="presentation" identifier="SHOW_GALLERY" id="a3i-y5-pey"/>
                         <segue destination="HaV-6B-t9s" kind="presentation" identifier="SHOW_PHOTO_GALLERY" id="puL-m8-bIf"/>
+                        <segue destination="BST-wX-LqF" kind="presentation" identifier="OPEN_AV_CAMERA" id="rIq-c5-3zr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1172" y="302"/>
+        </scene>
+        <!--Foundation Camera View Controller-->
+        <scene sceneID="oL0-bO-Mqp">
+            <objects>
+                <viewController id="BST-wX-LqF" customClass="AVFoundationCameraViewController" customModule="Filtron" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Ci-dT-oBZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eax-CE-JI3"/>
+                    </layoutGuides>
+                    <view key="view" alpha="0.5" contentMode="scaleToFill" id="QRo-Jq-JNS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xhs-SS-X9i">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tii-9T-Asa">
+                                        <rect key="frame" x="60" y="60" width="480" height="480"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="tii-9T-Asa" secondAttribute="height" multiplier="1:1" id="tiA-hZ-UsP"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEa-en-VRW">
+                                        <rect key="frame" x="272" y="548" width="55" height="30"/>
+                                        <state key="normal" title="Capture">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="capturePressed:" destination="BST-wX-LqF" eventType="touchUpInside" id="A26-qc-q9L"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="tii-9T-Asa" secondAttribute="centerX" id="Z7L-8C-HNL"/>
+                                    <constraint firstItem="tii-9T-Asa" firstAttribute="width" secondItem="Xhs-SS-X9i" secondAttribute="width" multiplier="0.8" id="hsg-mb-DYQ"/>
+                                    <constraint firstItem="eEa-en-VRW" firstAttribute="top" secondItem="tii-9T-Asa" secondAttribute="bottom" constant="8" id="pAU-aZ-s6V"/>
+                                    <constraint firstItem="eEa-en-VRW" firstAttribute="centerX" secondItem="tii-9T-Asa" secondAttribute="centerX" id="pF1-wc-evf"/>
+                                    <constraint firstAttribute="centerY" secondItem="tii-9T-Asa" secondAttribute="centerY" id="qHa-17-4Lb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xhs-SS-X9i" secondAttribute="trailing" constant="-16" id="4hb-s5-4FJ"/>
+                            <constraint firstItem="Xhs-SS-X9i" firstAttribute="top" secondItem="QRo-Jq-JNS" secondAttribute="topMargin" id="H6f-qa-S5f"/>
+                            <constraint firstItem="Xhs-SS-X9i" firstAttribute="leading" secondItem="QRo-Jq-JNS" secondAttribute="leadingMargin" constant="-16" id="QOb-O6-F1J"/>
+                            <constraint firstItem="Eax-CE-JI3" firstAttribute="top" secondItem="Xhs-SS-X9i" secondAttribute="bottom" id="mCJ-TI-Gmh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="capturePreviewImageView" destination="tii-9T-Asa" id="4ZK-SB-5Gt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TNL-y5-J3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2914" y="302"/>
         </scene>
         <!--Gallery View Controller-->
         <scene sceneID="bzI-zS-rew">
@@ -198,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fz-ZR-lfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1978" y="-97"/>
+            <point key="canvasLocation" x="2256" y="-97"/>
         </scene>
         <!--Photo Library View Controller-->
         <scene sceneID="GXO-HS-bKI">
@@ -267,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swL-oS-SBD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1978" y="700"/>
+            <point key="canvasLocation" x="2256" y="700"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BMl-SV-1cs">
