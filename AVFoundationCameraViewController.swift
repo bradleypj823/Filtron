@@ -52,10 +52,10 @@ class AVFoundationCameraViewController: UIViewController
     
     override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval)
     {
-        //reset position of preview layer
+        
     }
     
-    override func didReceiveMemoryWarning(){super.didReceiveMemoryWarning()}
+    //override func didReceiveMemoryWarning(){super.didReceiveMemoryWarning()}
 
     @IBAction func capturePressed(sender: AnyObject)
     {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1615112F19F074E000655FD7 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615112E19F074E000655FD7 /* PhotoLibraryViewController.swift */; };
+		1648016F19F3956600C19167 /* a4a7300a202644c96c1a85bcd0bb6986.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1648016E19F3956600C19167 /* a4a7300a202644c96c1a85bcd0bb6986.jpg */; };
 		166A5A7919F1D50D0003E68D /* AVFoundationCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166A5A7819F1D50D0003E68D /* AVFoundationCameraViewController.swift */; };
 		16B54EB419EC34B2004F7BE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B54EB319EC34B2004F7BE9 /* AppDelegate.swift */; };
 		16B54EB719EC34B2004F7BE9 /* Filtron.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 16B54EB519EC34B2004F7BE9 /* Filtron.xcdatamodeld */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		1615112E19F074E000655FD7 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		1648016E19F3956600C19167 /* a4a7300a202644c96c1a85bcd0bb6986.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = a4a7300a202644c96c1a85bcd0bb6986.jpg; sourceTree = "<group>"; };
 		166A5A7819F1D50D0003E68D /* AVFoundationCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVFoundationCameraViewController.swift; sourceTree = "<group>"; };
 		16B54EAE19EC34B2004F7BE9 /* Filtron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filtron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16B54EB219EC34B2004F7BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,7 +104,6 @@
 				16B54EB319EC34B2004F7BE9 /* AppDelegate.swift */,
 				16B54EBD19EC34B2004F7BE9 /* Images.xcassets */,
 				16B54EB519EC34B2004F7BE9 /* Filtron.xcdatamodeld */,
-				16C9C66E19EDDA9B0039750F /* Filter.swift */,
 				16B54EB119EC34B2004F7BE9 /* Supporting Files */,
 				16C9C66A19EDDA480039750F /* Filtron-Bridging-Header.h */,
 			);
@@ -112,6 +113,7 @@
 		16B54EB119EC34B2004F7BE9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1648016E19F3956600C19167 /* a4a7300a202644c96c1a85bcd0bb6986.jpg */,
 				16B54EB219EC34B2004F7BE9 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -137,6 +139,7 @@
 		16B54ED619EC34BD004F7BE9 /* Model Layer */ = {
 			isa = PBXGroup;
 			children = (
+				16C9C66E19EDDA9B0039750F /* Filter.swift */,
 				16C9C67019EDDC8D0039750F /* FilterThumbnail.swift */,
 				16C9C67219EDE7310039750F /* CoreDataSeeder.swift */,
 			);
@@ -246,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1648016F19F3956600C19167 /* a4a7300a202644c96c1a85bcd0bb6986.jpg in Resources */,
 				16B54EBC19EC34B2004F7BE9 /* Main.storyboard in Resources */,
 				16B54EC119EC34B2004F7BE9 /* LaunchScreen.xib in Resources */,
 				16B54EBE19EC34B2004F7BE9 /* Images.xcassets in Resources */,

@@ -111,13 +111,19 @@ class PhotoLibraryViewController: UIViewController, UICollectionViewDelegate, UI
             { () -> Void in
                 if pinch.velocity > 0
                 {
-                    self.flowlayout.itemSize = CGSize(width: self.flowlayout.itemSize.width * 2, height: self.flowlayout.itemSize.height * 2)
-                    println(self.flowlayout.itemSize.width)
+                    if self.flowlayout.itemSize.width < 260
+                    {
+                        self.flowlayout.itemSize = CGSize(width: self.flowlayout.itemSize.width * 2, height: self.flowlayout.itemSize.height * 2)
+                        println(self.flowlayout.itemSize.width)
+                    }
                 }
                 else
                 {
-                    self.flowlayout.itemSize = CGSize(width: self.flowlayout.itemSize.width * 0.5, height: self.flowlayout.itemSize.height * 0.5)
-                    println(self.flowlayout.itemSize.width)
+                    if self.flowlayout.itemSize.width > 65
+                    {
+                        self.flowlayout.itemSize = CGSize(width: self.flowlayout.itemSize.width * 0.5, height: self.flowlayout.itemSize.height * 0.5)
+                        println(self.flowlayout.itemSize.width)
+                    }
                 }
             }, completion: nil )
         }
